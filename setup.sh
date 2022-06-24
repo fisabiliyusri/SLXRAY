@@ -34,13 +34,13 @@ fi
 mkdir /var/lib/crot;
 echo "IP=" >> /var/lib/crot/ipvps.conf
 #cf
-wget https://raw.githubusercontent.com/fisabiliyusri/SLXRAY/main/ssh/cf.sh && chmod +x cf.sh && ./cf.sh
+wget https://raw.githubusercontent.com/fisabiliyusri/SLXRAY/main/ssh/slhost.sh && chmod +x slhost.sh && ./slhost.sh
 #install ssh ovpn
 wget https://raw.githubusercontent.com/fisabiliyusri/SLXRAY/main/ssh/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
 #install v2ray
 wget https://raw.githubusercontent.com/fisabiliyusri/SLXRAY/main/xray/ins-xray.sh && chmod +x ins-xray.sh && screen -S xray ./ins-xray.sh
 rm -f /root/ins-xray.sh
-rm -f /root/cf.sh
+rm -f /root/slhost.sh
 rm -f /root/ssh-vpn.sh
 systemctl daemon-reload
 history -c
