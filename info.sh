@@ -9,7 +9,7 @@ Info Port:
    - XRAY VLESS H2           : 100
    - XRAY VLESS MKCP         : 7443
    - XRAY VLESS MKCP TLS     : 743
-   - XRAY TROJAN GO          : 2087
+   - TROJAN GO               : 2087
    - XRAY TROJAN GRPC TLS    : 653
    - XRAY TROJAN XTLS/TLS    : 6443
    - XRAY VMESS HTTP TLS     : 643
