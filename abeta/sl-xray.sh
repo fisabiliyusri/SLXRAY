@@ -678,6 +678,75 @@ cat > /etc/xray/5vmess_http.json << END
 }
 
 END
+#5
+#VMESS_TCPTLS
+cat > /etc/xray/5vmess_tcp_tls.json << END
+{
+  "inbounds": [
+    {
+      "port": 535,
+      "protocol": "vmess",
+      "tag": "vmessTCPTLS",
+      "settings": {
+        "clients": [
+            {
+                "id": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+                "email": "vmessTCPTLS@XRAYbyRARE"                
+            }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "tls",
+        "tlsSettings": {
+            "alpn": [
+                "h2",
+                "http/1.1"
+            ],
+            "certificates": [
+                {
+                    "certificateFile": "/etc/rare/xray/xray.crt",
+                    "keyFile": "/etc/rare/xray/xray.key"
+                }
+            ]
+        },
+        "wsSettings": {
+            "path": "/xrayvws",
+            "headers": {
+                "Host": ""
+            }
+        }
+      },
+      "domain": "sgx6b.vless.tech",
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+            "http",
+            "tls"
+        ]
+      }
+    }
+  ]
+}
+
+
+END
+#
+#
+
+END
+#
+#
+
+END
+#
+#
+
+END
+#
+#
+
+END
 #
 #
 
