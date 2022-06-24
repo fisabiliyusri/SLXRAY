@@ -1,5 +1,5 @@
 #!/bin/bash
-# Mod By SL
+# mantapv2 SLXRAY
 # =====================================================
 
 # Color
@@ -75,7 +75,6 @@ cat > /etc/xray/1log.json << END
     "loglevel": "info"
   }
 }
-
 END
 #Port UTAMA 443
 #2
@@ -141,6 +140,123 @@ cat > /etc/xray/2vless.json << END
     }
   ]
 }
-
+END
+#3
+#VLESS_H2
+cat > /etc/xray/3vlessh2.json << END
+{
+  "inbounds": [
+    {
+      "port": 100,
+      "protocol": "vless",
+      "tag": "vlessH2",
+      "settings": {
+        "clients": [
+            {
+                "id": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+                "flow": "xtls-rprx-direct",
+                "email": "vlessH2@XRAYbyRARE"                
+            }
+        ],
+        "decryption": "none",
+        "fallbacks": [
+            {
+                "dest": 65534
+            }
+        ],
+        "fallbacks_h2": [
+            {
+                "dest": 65535 
+            }
+        ]
+      },
+      "streamSettings": {
+        "network": "h2",
+        "httpSettings": {
+            "path": "/vlessh2"
+        },
+        "security": "tls",
+        "tlsSettings": {
+            "alpn": [
+                "h2",
+                "http/1.1"
+            ],
+            "certificates": [
+                {
+                    "certificateFile": "/etc/rare/xray/xray.crt",
+                    "keyFile": "/etc/rare/xray/xray.key"
+                }
+            ]
+        }
+      },
+      "domain": "sgx6b.vless.tech"
+    }
+  ]
+}
+END
+#3
+#VLESS_MKCPTLS
+cat > /etc/xray/3vless_mkcptls.json << END
+{
+  "inbounds": [
+    {
+      "port": 743,
+      "protocol": "vless",
+      "tag": "vlessMKCPwgTLS",
+      "settings": {
+        "clients": [
+            {
+              "id": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+              "flow": "xtls-rprx-direct",
+              "email": "vlessMKCPwgTLS@XRAYbyRARE"             
+            }
+        ],
+        "decryption": "none",
+        "fallbacks": [
+          {
+            "alpn": "h2",
+            "dest": 31302,
+            "xver": 0            
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "kcp",
+        "security": "tls",
+        "tlsSettings": {
+          "certificates": [
+            {
+              "certificateFile": "/etc/rare/xray/xray.crt",
+              "keyFile": "/etc/rare/xray/xray.key"              
+            }
+          ]
+        },
+        "kcpSettings": {
+          "mtu": 1350,
+          "tti": 50,
+          "uplinkCapacity": 100,
+          "downlinkCapacity": 100,
+          "congestion": false,
+          "readBufferSize": 2,
+          "writeBufferSize": 2,
+          "header": {
+            "type": "wireguard"
+          },
+          "seed": "vlessmkcptls"
+        },
+        "wsSettings": {},
+        "quicSettings": {}
+      },
+      "domain": "sgx6c.vless.tech",
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ]
+}
 END
 #
