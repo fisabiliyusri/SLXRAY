@@ -29,6 +29,8 @@ chronyc tracking -v
 date
 
 #
+sudo pkill -f nginx & wait $!
+systemctl stop nginx
 sudo apt install gnupg2 ca-certificates lsb-release -y
 apt -y install nginx 
 systemctl daemon-reload
