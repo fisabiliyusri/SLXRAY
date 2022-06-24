@@ -321,4 +321,16 @@ cat > /etc/xray/3vless_mkcp.json << END
 }
 
 END
+#3
+#VLESS_WS_NONE
+cat > /etc/xray/3vless_mkcp.json << END
+
+END
 #
+#
+
+END
+#
+#
+
+END
