@@ -58,7 +58,7 @@ bash acme.sh --register-account -m slinfinity69@gmail.com
 bash acme.sh --issue --standalone -d $domain --force
 bash acme.sh --installcert -d $domain --fullchainpath /etc/xray/xray.crt --keypath /etc/xray/xray.key
 
-uuid=$(cat /proc/sys/kernel/random/uuid)
+uuid1=$(cat /proc/sys/kernel/random/uuid)
 
 # // Certificate File
 path_crt="/etc/xray/xray.crt"
@@ -90,7 +90,7 @@ cat > /etc/xray/2vless.json << END
       "settings": {
         "clients": [
           {
-            "id": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+            "id": "${uuid1}",
             "add": "sgx6b.vless.tech",
             "flow": "xtls-rprx-direct",
             "email": "vlessTCP@XRAYbyRARE" 
@@ -155,7 +155,7 @@ cat > /etc/xray/3vless_h2.json << END
       "settings": {
         "clients": [
             {
-                "id": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+                "id": "${uuid1}",
                 "flow": "xtls-rprx-direct",
                 "email": "vlessH2@XRAYbyRARE"                
             }
@@ -209,7 +209,7 @@ cat > /etc/xray/3vless_mkcptls.json << END
       "settings": {
         "clients": [
             {
-              "id": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+              "id": "${uuid1}",
               "flow": "xtls-rprx-direct",
               "email": "vlessMKCPwgTLS@XRAYbyRARE"             
             }
@@ -275,7 +275,7 @@ cat > /etc/xray/3vless_mkcp.json << END
       "settings": {
         "clients": [
             {
-              "id": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+              "id": "${uuid1}",
               "flow": "xtls-rprx-direct",
               "email": "vlessMKCPwg@XRAYbyRARE"             
             }
@@ -333,7 +333,7 @@ cat > /etc/xray/3vless_ws_none.json << END
       "settings": {
         "clients": [
           {
-            "id": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+            "id": "${uuid1}",
             "email": "vlessWSNONE@XRAYbyRARE"
           }
         ],
@@ -379,7 +379,7 @@ cat > /etc/xray/3vless_ws.json << END
       "settings": {
         "clients": [
           {
-            "id": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+            "id": "${uuid1}",
             "email": "vlessWSTLS@XRAYbyRARE"
           }
         ],
@@ -411,7 +411,7 @@ cat > /etc/xray/4trojan_grpc.json << END
             "settings": {
                 "clients": [
                     {
-                        "password": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+                        "password": "${uuid1}",
                         "email": "trojanGRPC@XRAYbyRARE"
                     }
                 ],
@@ -445,7 +445,7 @@ cat > /etc/xray/4trojan_tcp.json << END
       "settings": {
         "clients": [
           {
-            "password": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+            "password": "${uuid1}",
             "email": "trojanTCP@XRAYbyRARE"
           }
         ],
@@ -479,7 +479,7 @@ cat > /etc/xray/4trojan_xtls.json << END
             "settings": {
                 "clients": [
                     {
-                        "password": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+                        "password": "${uuid1}",
                         "flow": "xtls-rprx-direct",
                         "email": "trojanXTLS@XRAYbyRARE"
                     }
@@ -535,7 +535,7 @@ cat > /etc/xray/5vmess_ws_tls.json << END
       "settings": {
         "clients": [
           {
-            "id": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+            "id": "${uuid1}",
             "add": "$domain",
             "email": "vmessWSTLS@XRAYbyRARE"            
           }
@@ -566,7 +566,7 @@ cat > /etc/xray/5vmess_http_tls.json << END
       "settings": {
         "clients": [
             {
-                "id": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+                "id": "${uuid1}",
                 "email": "vmessHTTPTLS@XRAYbyRARE"                
             }
         ]
@@ -638,7 +638,7 @@ cat > /etc/xray/5vmess_http.json << END
       "settings": {
         "clients": [
             {
-                "id": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+                "id": "${uuid1}",
                 "email": "vmessHTTP@XRAYbyRARE"                
             }
         ]
@@ -690,7 +690,7 @@ cat > /etc/xray/5vmess_tcp_tls.json << END
       "settings": {
         "clients": [
             {
-                "id": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+                "id": "${uuid1}",
                 "email": "vmessTCPTLS@XRAYbyRARE"                
             }
         ]
@@ -742,7 +742,7 @@ cat > /etc/xray/5vmess_ws_none.json << END
       "settings": {
         "clients": [
           {
-            "id": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+            "id": "${uuid1}",
             "add": "$domain",
             "email": "vmessWSNONE@XRAYbyRARE" 
           }
@@ -788,7 +788,7 @@ cat > /etc/xray/5vless_grpc.json << END
       "settings": {
         "clients": [
           {
-            "id": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+            "id": "${uuid1}",
             "add": "$domain",
             "email": "vlessGRPC@XRAYbyRARE" 
           }
@@ -831,17 +831,17 @@ cat > /etc/xray/7shadowsocks.json << END
       "settings": {
         "clients": [
             {
-              "password": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+              "password": "${uuid1}",
               "method": "aes-128-gcm",
               "email": "aes-128-gcm@XRAYbyRARE"             
             },
             {
-              "password": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+              "password": "${uuid1}",
               "method": "aes-256-gcm",
               "email": "aes-256-gcm@XRAYbyRARE"                 
             },
             {
-              "password": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+              "password": "${uuid1}",
               "method": "chacha20-poly1305",
               "email": "chacha20-poly1305@XRAYbyRARE"                 
             }
