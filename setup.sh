@@ -35,13 +35,13 @@ mkdir /var/lib/crot;
 echo "IP=" >> /var/lib/crot/ipvps.conf
 #cf
 wget https://raw.githubusercontent.com/fisabiliyusri/SLXRAY/main/ssh/slhost.sh && chmod +x slhost.sh && ./slhost.sh
-#install ssh ovpn
-wget https://raw.githubusercontent.com/fisabiliyusri/SLXRAY/main/ssh/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
 #install xray
 #wget https://raw.githubusercontent.com/fisabiliyusri/SLXRAY/main/xray/ins-xray.sh && chmod +x ins-xray.sh && screen -S xray ./ins-xray.sh
 wget https://raw.githubusercontent.com/fisabiliyusri/SLXRAY/main/xray/sl-xray.sh && chmod +x sl-xray.sh && screen -S xray ./sl-xray.sh
-#
+#xtrojan
 wget https://raw.githubusercontent.com/fisabiliyusri/SLXRAY/main/xray/x-trojan.sh && chmod +x x-trojan.sh && screen -S x-trojan ./x-trojan.sh
+#install ssh
+wget https://raw.githubusercontent.com/fisabiliyusri/SLXRAY/main/ssh/ssh-vpn.sh && chmod +x ssh-vpn.sh && screen -S ssh-vpn ./ssh-vpn.sh
 rm -f /root/ins-xray.sh
 rm -f /root/sl-xray.sh
 rm -f /root/x-trojan.sh
