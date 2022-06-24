@@ -1,0 +1,50 @@
+{
+    "inbounds": [
+        {
+            "port": 6443,
+            "protocol": "trojan",
+            "tag": "trojanXTLS",
+            "settings": {
+                "clients": [
+                    {
+                        "password": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+                        "flow": "xtls-rprx-direct",
+                        "email": "trojanXTLS@XRAYbyRARE"
+                    }
+                ],
+                "fallbacks": [
+                    {
+                        "alpn": "h2",
+                        "dest": 31302,
+                        "xver": 0
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "xtls",
+                "xtlsSettings": {
+                    "minVersion": "1.2",
+                    "alpn": [
+                        "http/1.1",
+                        "h2"
+                    ],
+                    "certificates": [
+                        {
+                            "certificateFile": "/etc/rare/xray/xray.crt",
+                            "keyFile": "/etc/rare/xray/xray.key"
+                        }
+                    ]
+                },
+                "domain": "sgx6b.vless.tech",
+                "sniffing": {
+                    "enabled": true,
+                    "destOverride": [
+                        "http",
+                        "tls"
+                    ]
+                }
+            }
+        }
+    ]
+}

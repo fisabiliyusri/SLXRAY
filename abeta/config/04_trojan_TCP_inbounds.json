@@ -1,0 +1,30 @@
+{
+  "inbounds": [
+    {
+      "port": 31296,
+      "listen": "127.0.0.1",
+      "protocol": "trojan",
+      "tag": "trojanTCP",
+      "settings": {
+        "clients": [
+          {
+            "password": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+            "email": "trojanTCP@XRAYbyRARE"
+          }
+        ],
+        "fallbacks": [
+          {
+            "dest": "31300"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "none",
+        "tcpSettings": {
+          "acceptProxyProtocol": true
+        }
+      }
+    }
+  ]
+}

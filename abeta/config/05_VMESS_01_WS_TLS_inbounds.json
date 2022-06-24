@@ -1,0 +1,27 @@
+{
+  "inbounds": [
+    {
+      "listen": "127.0.0.1",
+      "port": 31299,
+      "protocol": "vmess",
+      "tag": "vmessWSTLS",
+      "settings": {
+        "clients": [
+          {
+            "id": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+            "add": "sgx6b.vless.tech",
+            "email": "vmessWSTLS@XRAYbyRARE"            
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "acceptProxyProtocol": true,
+          "path": "/xrayvws"
+        }
+      }
+    }
+  ]
+}

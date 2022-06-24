@@ -1,0 +1,49 @@
+{
+  "inbounds": [
+    {
+      "port": 100,
+      "protocol": "vless",
+      "tag": "vlessH2",
+      "settings": {
+        "clients": [
+            {
+                "id": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+                "flow": "xtls-rprx-direct",
+                "email": "vlessH2@XRAYbyRARE"                
+            }
+        ],
+        "decryption": "none",
+        "fallbacks": [
+            {
+                "dest": 65534
+            }
+        ],
+        "fallbacks_h2": [
+            {
+                "dest": 65535 
+            }
+        ]
+      },
+      "streamSettings": {
+        "network": "h2",
+        "httpSettings": {
+            "path": "/vlessh2"
+        },
+        "security": "tls",
+        "tlsSettings": {
+            "alpn": [
+                "h2",
+                "http/1.1"
+            ],
+            "certificates": [
+                {
+                    "certificateFile": "/etc/rare/xray/xray.crt",
+                    "keyFile": "/etc/rare/xray/xray.key"
+                }
+            ]
+        }
+      },
+      "domain": "sgx6b.vless.tech"
+    }
+  ]
+}

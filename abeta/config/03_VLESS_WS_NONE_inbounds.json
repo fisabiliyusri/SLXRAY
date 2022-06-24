@@ -1,0 +1,40 @@
+{
+  "inbounds": [
+    {
+      "port": 88,
+      "protocol": "vless",
+      "tag": "vlessWSNONE",
+      "settings": {
+        "clients": [
+          {
+            "id": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+            "email": "vlessWSNONE@XRAYbyRARE"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "tlsSettings": {},
+        "tcpSettings": {},
+        "kcpSettings": {},
+        "httpSettings": {},
+        "wsSettings": {
+          "path": "/xrayws",
+          "headers": {
+            "Host": ""
+          }
+        },
+        "quicSettings": {}
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ]
+}

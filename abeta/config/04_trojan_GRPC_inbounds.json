@@ -1,0 +1,29 @@
+{
+    "inbounds": [
+        {
+            "port": 31304,
+            "listen": "127.0.0.1",
+            "protocol": "trojan",
+            "tag": "trojanGRPCTCP",
+            "settings": {
+                "clients": [
+                    {
+                        "password": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+                        "email": "trojanGRPC@XRAYbyRARE"
+                    }
+                ],
+                "fallbacks": [
+                    {
+                        "dest": "31300"
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "grpc",
+                "grpcSettings": {
+                    "serviceName": "xraytrojangrpctcp"
+                }
+            }
+        }
+    ]
+}

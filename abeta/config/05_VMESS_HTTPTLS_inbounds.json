@@ -1,0 +1,67 @@
+{
+  "inbounds": [
+    {
+      "port": 643,
+      "protocol": "vmess",
+      "tag": "vmessHTTPTLS",
+      "settings": {
+        "clients": [
+            {
+                "id": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+                "email": "vmessHTTPTLS@XRAYbyRARE"                
+            }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "tcpSettings": {
+          "header": {
+            "type": "http",
+            "response": {
+              "version": "1.1",
+              "status": "200",
+              "reason": "OK",
+              "headers": {
+                "Content-Type": [
+                  "application/octet-stream",
+                  "video/mpeg",
+                  "application/x-msdownload",
+                  "text/html",
+                  "application/x-shockwave-flash"                  
+                ],
+                "Transfer-Encoding": [
+                  "chunked"
+                ],
+                "Connection": [
+                  "keep-alive"
+                ],
+                "Pragma": "no-cache"
+              }           
+            }
+          }
+        },
+        "security": "tls",
+        "tlsSettings": {
+          "certificates": [
+            {
+              "certificateFile": "/etc/rare/xray/xray.crt",
+              "keyFile": "/etc/rare/xray/xray.key"              
+            }
+          ],
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ]
+        }
+      },
+      "domain": "sgx6c.vless.tech",
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ]
+}

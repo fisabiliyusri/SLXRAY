@@ -1,0 +1,29 @@
+{
+  "inbounds": [
+    {
+      "port": 1111,
+      "protocol": "shadowsocks",
+      "tag": "shadowsocksAEAD",
+      "settings": {
+        "clients": [
+            {
+              "password": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+              "method": "aes-128-gcm",
+              "email": "aes-128-gcm@XRAYbyRARE"             
+            },
+            {
+              "password": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+              "method": "aes-256-gcm",
+              "email": "aes-256-gcm@XRAYbyRARE"                 
+            },
+            {
+              "password": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+              "method": "chacha20-poly1305",
+              "email": "chacha20-poly1305@XRAYbyRARE"                 
+            }
+        ],
+        "network": "tcp,udp"
+      }
+    }
+  ]
+}

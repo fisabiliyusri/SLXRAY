@@ -1,0 +1,60 @@
+{
+  "inbounds": [
+    {
+      "port": 443,
+      "protocol": "vless",
+      "tag": "vlessTCP",
+      "settings": {
+        "clients": [
+          {
+            "id": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+            "add": "sgx6b.vless.tech",
+            "flow": "xtls-rprx-direct",
+            "email": "vlessTCP@XRAYbyRARE" 
+          }
+        ],
+        "decryption": "none",
+        "fallbacks": [
+          {
+            "dest": 31296,
+            "xver": 1
+          },
+          {
+            "alpn": "h2",
+            "dest": 31302,
+            "xver": 0
+          },
+          {
+            "path": "/xrayws",
+            "dest": 31297,
+            "xver": 1
+          },
+          {
+            "path": "/xrayvws",
+            "dest": 31299,
+            "xver": 1
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "xtls",
+        "xtlsSettings": {
+          "minVersion": "1.2",
+          "alpn": [
+            "http/1.1",
+            "h2"
+          ],
+          "certificates": [
+            {
+              "certificateFile": "/etc/rare/xray/xray.crt",
+              "keyFile": "/etc/rare/xray/xray.key",
+              "ocspStapling": 3600,
+              "usage": "encipherment"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

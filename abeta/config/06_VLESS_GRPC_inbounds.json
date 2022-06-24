@@ -1,0 +1,38 @@
+{
+  "inbounds": [
+    {
+      "port": 6643,
+      "protocol": "vless",
+      "tag": "vlessGRPC",
+      "settings": {
+        "clients": [
+          {
+            "id": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+            "add": "sgx6b.vless.tech",
+            "email": "vlessGRPC@XRAYbyRARE" 
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "gun",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "",
+          "alpn": [
+            "h2"
+          ],
+          "certificates": [
+            {
+              "certificateFile": "/etc/rare/xray/xray.crt",
+              "keyFile": "/etc/rare/xray/xray.key"
+            }
+          ]
+        },
+        "grpcSettings": {
+          "serviceName": "xraygrpc"
+        }
+      }
+    }
+  ]
+}

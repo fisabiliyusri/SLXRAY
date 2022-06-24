@@ -1,0 +1,27 @@
+{
+  "inbounds": [
+    {
+      "port": 31297,
+      "listen": "127.0.0.1",
+      "protocol": "vless",
+      "tag": "vlessWSTLS",
+      "settings": {
+        "clients": [
+          {
+            "id": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+            "email": "vlessWSTLS@XRAYbyRARE"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "acceptProxyProtocol": true,
+          "path": "/xrayws"
+        }
+      }
+    }
+  ]
+}
