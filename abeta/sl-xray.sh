@@ -1051,6 +1051,35 @@ WantedBy=multi-user.target
 END
 
 # // Enable & Start Service
+# xray
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 31301 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 31299 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 31296 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 31304 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 31297 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
+# xray
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 31301 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 31299 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 31296 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 31304 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 31297 -j ACCEPT
+iptables -I INPUT -m state --state NEW -m udp -p udp --dport 443 -j ACCEPT
+iptables-save >/etc/iptables.rules.v4
+netfilter-persistent save
+netfilter-persistent reload
+systemctl daemon-reload
+
+# Starting
+systemctl daemon-reload
+systemctl restart xray
+systemctl enable xray
+systemctl restart xray.service
+systemctl enable xray.service
+
+systemctl daemon-reload
+systemctl restart nginx
+systemctl restart xray
 # Accept port Xray
 iptables -I INPUT -m state --state NEW -m tcp -p tcp --dport 8443 -j ACCEPT
 iptables -I INPUT -m state --state NEW -m udp -p udp --dport 8443 -j ACCEPT
@@ -1067,6 +1096,9 @@ systemctl stop xray.service
 systemctl start xray.service
 systemctl enable xray.service
 systemctl restart xray.service
+systemctl daemon-reload
+systemctl restart nginx
+systemctl restart xray
 
 # Install Trojan Go
 latest_version="$(curl -s "https://api.github.com/repos/p4gefau1t/trojan-go/releases" | grep tag_name | sed -E 's/.*"v(.*)".*/\1/' | head -n 1)"
