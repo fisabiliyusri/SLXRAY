@@ -729,25 +729,230 @@ cat > /etc/xray/5vmess_tcp_tls.json << END
   ]
 }
 
+END
+#5
+#VMess_WS_NONE
+cat > /etc/xray/5vmess_ws_none.json << END
+{
+  "inbounds": [
+    {
+      "port": 888,
+      "protocol": "vmess",
+      "tag": "vmessWSNONE",
+      "settings": {
+        "clients": [
+          {
+            "id": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+            "add": "sgx6b.vless.tech",
+            "email": "vmessWSNONE@XRAYbyRARE" 
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "tlsSettings": {},
+        "tcpSettings": {},
+        "kcpSettings": {},
+        "httpSettings": {},
+        "wsSettings": {
+          "path": "/xrayvws",
+          "headers": {
+            "Host": ""
+          }
+        },
+        "quicSettings": {}
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ]
+}
 
 END
-#
-#
+#5
+#VLESS_GRPC
+cat > /etc/xray/5vless_grpc.json << END
+{
+  "inbounds": [
+    {
+      "port": 6643,
+      "protocol": "vless",
+      "tag": "vlessGRPC",
+      "settings": {
+        "clients": [
+          {
+            "id": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+            "add": "sgx6b.vless.tech",
+            "email": "vlessGRPC@XRAYbyRARE" 
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "gun",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "",
+          "alpn": [
+            "h2"
+          ],
+          "certificates": [
+            {
+              "certificateFile": "/etc/rare/xray/xray.crt",
+              "keyFile": "/etc/rare/xray/xray.key"
+            }
+          ]
+        },
+        "grpcSettings": {
+          "serviceName": "xraygrpc"
+        }
+      }
+    }
+  ]
+}
 
 END
-#
-#
+#7
+#shadowsocks
+cat > /etc/xray/7shadowsocks.json << END
+{
+  "inbounds": [
+    {
+      "port": 1111,
+      "protocol": "shadowsocks",
+      "tag": "shadowsocksAEAD",
+      "settings": {
+        "clients": [
+            {
+              "password": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+              "method": "aes-128-gcm",
+              "email": "aes-128-gcm@XRAYbyRARE"             
+            },
+            {
+              "password": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+              "method": "aes-256-gcm",
+              "email": "aes-256-gcm@XRAYbyRARE"                 
+            },
+            {
+              "password": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+              "method": "chacha20-poly1305",
+              "email": "chacha20-poly1305@XRAYbyRARE"                 
+            }
+        ],
+        "network": "tcp,udp"
+      }
+    }
+  ]
+}
 
 END
-#
-#
+#10
+#ipv4
+cat > /etc/xray/10ipv4.json << END
+{
+    "outbounds":[
+        {
+            "protocol":"freedom",
+            "settings":{
+                "domainStrategy":"UseIPv4"
+            },
+            "tag":"IPv4-out"
+        },
+        {
+            "protocol":"freedom",
+            "settings":{
+                "domainStrategy":"UseIPv6"
+            },
+            "tag":"IPv6-out"
+        },
+        {
+            "protocol":"blackhole",
+            "settings": {},
+            "tag": "blocked"
+        },
+        {
+            "protocol": "freedom",
+            "tag": "direct"        
+        }
+    ],
+    "routing": {
+        "rules": [
+            {
+                "type": "field",
+                "ip": [
+                    "0.0.0.0/8",
+                    "10.0.0.0/8",
+                    "100.64.0.0/10",
+                    "169.254.0.0/16",
+                    "172.16.0.0/12",
+                    "192.0.0.0/24",
+                    "192.0.2.0/24",
+                    "192.168.0.0/16",
+                    "198.18.0.0/15",
+                    "198.51.100.0/24",
+                    "203.0.113.0/24",
+                    "::1/128",
+                    "fc00::/7",
+                    "fe80::/10"
+                ],
+                "outboundTag": "blocked"
+            },
+            {
+                "inboundTag": [
+                    "api"
+                ],
+                "outboundTag": "api",
+                "type": "field"
+            },
+            {
+                "type": "field",
+                "outboundTag": "blocked",
+                "protocol": [
+                    "bittorrent"
+                ]
+            }
+        ]
+    },
+    "stats": {},
+    "api": {
+        "services": [
+            "StatsService"
+        ],
+        "tag": "api"
+    },
+    "policy": {
+        "levels": {
+            "0": {
+                "statsUserDownlink": true,
+                "statsUserUplink": true
+            }
+        },
+        "system": {
+            "statsInboundUplink": true,
+            "statsInboundDownlink": true
+        }
+    }
+}
 
 END
-#
-#
+#11
+#dns
+cat > /etc/xray/11dns.json << END
+{
+    "dns": {
+        "servers": [
+          "localhost"
+        ]
+  }
+}
 
 END
+#CONFIG_SELESAI
 #
-#
-
-END
