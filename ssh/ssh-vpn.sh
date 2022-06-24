@@ -102,7 +102,6 @@ apt -y install wget curl
 # Install Requirements Tools
 apt install ruby -y
 apt install python -y
-apt install privoxy -y
 apt install make -y
 apt install cowsay -y
 apt install figlet -y
