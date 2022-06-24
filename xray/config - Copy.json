@@ -1,0 +1,769 @@
+{
+  "log": {
+    "access": "/var/log/xray/access.log",
+    "error": "/var/log/xray/error.log",
+    "loglevel": "info"
+  },
+  "inbounds": [
+    {
+      "port": 443,
+      "protocol": "vless",
+      "tag": "vlessXTLS",
+      "settings": {
+        "clients": [
+          {
+            "id": "5cb726f4-dbc1-4079-b440-fe5be88d18ee",
+            "flow": "xtls-rprx-direct",
+            "email": "testv5@vlessXTLS.XRAYbyRARE"
+          }
+        ],
+        "decryption": "none",
+        "fallbacks": [
+          {
+            "alpn": "h2",
+            "dest": 31302,
+            "xver": 0
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "xtls",
+        "xtlsSettings": {
+          "minVersion": "1.2",
+          "alpn": [
+            "http/1.1",
+            "h2"
+          ],
+          "certificates": [
+            {
+              "certificateFile": "/etc/xray/xray.crt",
+              "keyFile": "/etc/xray/xray.key",
+              "ocspStapling": 3600,
+              "usage": "encipherment"
+            }
+          ]
+        }
+      },
+      "domain": ""
+    },
+    {
+      "port": 88,
+      "protocol": "vless",
+      "tag": "vlessWSTLS",
+      "settings": {
+        "clients": [
+          {
+            "id": "5cb726f4-dbc1-4079-b440-fe5be88d18ee",
+            "flow": "xtls-rprx-direct",
+            "email": "testv5@vlessWSTLS.XRAYbyRARE"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "certificates": [
+            {
+              "certificateFile": "/etc/xray/xray.crt",
+              "keyFile": "/etc/xray/xray.key"
+            }
+          ],
+          "alpn": [
+            "http/1.1"
+          ]
+        },
+        "tcpSettings": {},
+        "kcpSettings": {},
+        "httpSettings": {},
+        "wsSettings": {
+          "path": "/vlessws",
+          "headers": {
+            "Host": ""
+          }
+        },
+        "quicSettings": {}
+      },
+      "domain": "",
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    },
+    {
+      "port": 80,
+      "protocol": "vless",
+      "tag": "vlessWS",
+      "settings": {
+        "clients": [
+          {
+            "id": "5cb726f4-dbc1-4079-b440-fe5be88d18ee",
+            "flow": "xtls-rprx-direct",
+            "email": "testv5@vlessWS.XRAYbyRARE"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "tlsSettings": {},
+        "tcpSettings": {},
+        "kcpSettings": {},
+        "httpSettings": {},
+        "wsSettings": {
+          "path": "/vlessws",
+          "headers": {
+            "Host": ""
+          }
+        },
+        "quicSettings": {}
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    },
+    {
+      "port": 880,
+      "protocol": "vless",
+      "tag": "vlessGRPC",
+      "settings": {
+        "clients": [
+          {
+            "id": "5cb726f4-dbc1-4079-b440-fe5be88d18ee",
+            "flow": "xtls-rprx-direct",
+            "email": "testv5@vlessGRPC.XRAYbyRARE"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "gun",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "",
+          "alpn": [
+            "h2"
+          ],
+          "certificates": [
+            {
+              "certificateFile": "/etc/xray/xray.crt",
+              "keyFile": "/etc/xray/xray.key"
+            }
+          ]
+        },
+        "grpcSettings": {
+          "serviceName": "vlessxraygrpc"
+        }
+      }
+    },              
+    {
+      "port": 100,
+      "protocol": "vless",
+      "tag": "vlessH2",
+      "settings": {
+        "clients": [
+          {
+            "id": "5cb726f4-dbc1-4079-b440-fe5be88d18ee",
+            "flow": "xtls-rprx-direct",
+            "email": "testv5@vlessH2.XRAYbyRARE"
+          }
+        ],
+        "decryption": "none",
+        "fallbacks": [
+          {
+            "dest": 65534
+          }
+        ],
+        "fallbacks_h2": [
+          {
+            "dest": 65535
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "h2",
+        "httpSettings": {
+          "path": "/vlessh2"
+        },
+        "security": "tls",
+        "tlsSettings": {
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ],
+          "certificates": [
+            {
+              "certificateFile": "/etc/xray/xray.crt",
+              "keyFile": "/etc/xray/xray.key"
+            }
+          ]
+        }
+      },
+      "domain": ""
+    },
+    {
+      "port": 743,
+      "protocol": "vless",
+      "tag": "vlessMKCPwgTLS",
+      "settings": {
+        "clients": [
+          {
+            "id": "5cb726f4-dbc1-4079-b440-fe5be88d18ee",
+            "flow": "xtls-rprx-direct",
+            "email": "testv5@vlessMKCPwgTLS.XRAYbyRARE"
+          }
+        ],
+        "decryption": "none",
+        "fallbacks": [
+          {
+            "alpn": "h2",
+            "dest": 31302,
+            "xver": 0
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "kcp",
+        "security": "tls",
+        "tlsSettings": {
+          "certificates": [
+            {
+              "certificateFile": "/etc/xray/xray.crt",
+              "keyFile": "/etc/xray/xray.key"
+            }
+          ]
+        },
+        "tcpSettings": {},
+        "httpSettings": {},
+        "kcpSettings": {
+          "mtu": 1350,
+          "tti": 50,
+          "uplinkCapacity": 100,
+          "downlinkCapacity": 100,
+          "congestion": false,
+          "readBufferSize": 2,
+          "writeBufferSize": 2,
+          "header": {
+            "type": "wireguard"
+          },
+          "seed": "vlessmkcptls"
+        },
+        "wsSettings": {},
+        "quicSettings": {}
+      },
+      "domain": "",
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    },
+    {
+      "port": 7443,
+      "protocol": "vless",
+      "tag": "vlessMKCPwg",
+      "settings": {
+        "clients": [
+          {
+            "id": "5cb726f4-dbc1-4079-b440-fe5be88d18ee",
+            "flow": "xtls-rprx-direct",
+            "email": "testv5@vlessMKCPwg.XRAYbyRARE"
+          }
+        ],
+        "decryption": "none",
+        "fallbacks": [
+          {
+            "alpn": "h2",
+            "dest": 31302,
+            "xver": 0
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "kcp",
+        "security": "none",
+        "tlsSettings": {},
+        "tcpSettings": {},
+        "httpSettings": {},
+        "kcpSettings": {
+          "mtu": 1350,
+          "tti": 50,
+          "uplinkCapacity": 100,
+          "downlinkCapacity": 100,
+          "congestion": false,
+          "readBufferSize": 2,
+          "writeBufferSize": 2,
+          "header": {
+            "type": "wireguard"
+          },
+          "seed": "vlessmkcp"
+        },
+        "wsSettings": {},
+        "quicSettings": {}
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    },
+    {
+      "port": 6443,
+      "protocol": "trojan",
+      "tag": "trojanXTLS",
+      "settings": {
+        "clients": [
+          {
+            "password": "5cb726f4-dbc1-4079-b440-fe5be88d18ee",
+            "flow": "xtls-rprx-direct",
+            "email": "testv5@trojanXTLS.XRAYbyRARE"
+          }
+        ],
+        "fallbacks": [
+          {
+            "alpn": "h2",
+            "dest": 31302,
+            "xver": 0
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "xtls",
+        "xtlsSettings": {
+          "minVersion": "1.2",
+          "alpn": [
+            "http/1.1",
+            "h2"
+          ],
+          "certificates": [
+            {
+              "certificateFile": "/etc/xray/xray.crt",
+              "keyFile": "/etc/xray/xray.key"
+            }
+          ]
+        },
+        "tcpSettings": {},
+        "kcpSettings": {},
+        "wsSettings": {},
+        "httpSettings": {},
+        "quicSettings": {},
+        "grpcSettings": {}
+      },
+      "domain": "",
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    },
+    {
+      "port": 643,
+      "protocol": "vmess",
+      "tag": "vmessHTTPTLS",
+      "settings": {
+        "clients": [
+          {
+            "id": "5cb726f4-dbc1-4079-b440-fe5be88d18ee",
+            "email": "testv5@vmessHTTPTLS.XRAYbyRARE"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "tcpSettings": {
+          "header": {
+            "type": "http",
+            "response": {
+              "version": "1.1",
+              "status": "200",
+              "reason": "OK",
+              "headers": {
+                "Content-Type": [
+                  "application/octet-stream",
+                  "video/mpeg",
+                  "application/x-msdownload",
+                  "text/html",
+                  "application/x-shockwave-flash"
+                ],
+                "Transfer-Encoding": [
+                  "chunked"
+                ],
+                "Connection": [
+                  "keep-alive"
+                ],
+                "Pragma": "no-cache"
+              }
+            }
+          }
+        },
+        "security": "tls",
+        "tlsSettings": {
+          "certificates": [
+            {
+              "certificateFile": "/etc/xray/xray.crt",
+              "keyFile": "/etc/xray/xray.key"
+            }
+          ],
+          "alpn": [
+            "http/1.1"
+          ]
+        },
+        "kcpSettings": {},
+        "wsSettings": {},
+        "httpSettings": {},
+        "quicSettings": {},
+        "grpcSettings": {}
+      },
+      "domain": "",
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    },
+    {
+      "port": 6643,
+      "protocol": "vmess",
+      "tag": "vmessHTTP",
+      "settings": {
+        "clients": [
+          {
+            "id": "5cb726f4-dbc1-4079-b440-fe5be88d18ee",
+            "email": "testv5@vmessHTTP.XRAYbyRARE"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "tcpSettings": {
+          "header": {
+            "type": "http",
+            "response": {
+              "version": "1.1",
+              "status": "200",
+              "reason": "OK",
+              "headers": {
+                "Content-Type": [
+                  "application/octet-stream",
+                  "video/mpeg",
+                  "application/x-msdownload",
+                  "text/html",
+                  "application/x-shockwave-flash"
+                ],
+                "Transfer-Encoding": [
+                  "chunked"
+                ],
+                "Connection": [
+                  "keep-alive"
+                ],
+                "Pragma": "no-cache"
+              }
+            }
+          }
+        },
+        "security": "none"
+      }
+    },
+    {
+      "port": 535,
+      "protocol": "vmess",
+      "tag": "vmessTCPTLS",
+      "settings": {
+        "clients": [
+          {
+            "id": "5cb726f4-dbc1-4079-b440-fe5be88d18ee",
+            "email": "testv5@vmessTCPTLS.XRAYbyRARE"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "tls",
+        "tlsSettings": {
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ],
+          "certificates": [
+            {
+              "certificateFile": "/etc/xray/xray.crt",
+              "keyFile": "/etc/xray/xray.key"
+            }
+          ]
+        },
+        "wsSettings": {
+          "path": "/vmesstcpws",
+          "headers": {
+            "Host": ""
+          }
+        }
+      },
+      "domain": "",
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    },
+    {
+      "port": 435,
+      "protocol": "vmess",
+      "tag": "vmessWSTLS",
+      "settings": {
+        "clients": [
+          {
+            "id": "5cb726f4-dbc1-4079-b440-fe5be88d18ee",
+            "email": "testv5@vmessWSTLS.XRAYbyRARE"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "certificates": [
+            {
+              "certificateFile": "/etc/xray/xray.crt",
+              "keyFile": "/etc/xray/xray.key"
+            }
+          ]
+        },
+        "tcpSettings": {},
+        "kcpSettings": {},
+        "httpSettings": {},
+        "wsSettings": {
+          "path": "/vmessws",
+          "headers": {
+            "Host": ""
+          }
+        },
+        "quicSettings": {}
+      },
+      "domain": "",
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    },
+    {
+      "port": 465,
+      "protocol": "vmess",
+      "tag": "vmessWS",
+      "settings": {
+        "clients": [
+          {
+            "id": "5cb726f4-dbc1-4079-b440-fe5be88d18ee",
+            "email": "testv5@vmessWS.XRAYbyRARE"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "tlsSettings": {},
+        "tcpSettings": {},
+        "kcpSettings": {},
+        "httpSettings": {},
+        "wsSettings": {
+          "path": "/vmessws",
+          "headers": {
+            "Host": ""
+          }
+        },
+        "quicSettings": {}
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    },
+    {
+      "port": 663,
+      "protocol": "vmess",
+      "tag": "vmessGRPC",
+      "settings": {
+        "clients": [
+          {
+            "id": "5cb726f4-dbc1-4079-b440-fe5be88d18ee",
+            "email": "testv5@vmessGRPC.XRAYbyRARE"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "gun",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "",
+          "alpn": [
+            "h2"
+          ],
+          "certificates": [
+            {
+              "certificateFile": "/etc/xray/xray.crt",
+              "keyFile": "/etc/xray/xray.key"
+            }
+          ]
+        },
+        "grpcSettings": {
+          "serviceName": "vmessxraygrpc"
+        }
+      }
+    },
+    {
+      "port": 1111,
+      "protocol": "shadowsocks",
+      "tag": "shadowsocksAEAD",
+      "settings": {
+        "clients": [
+          {
+            "password": "5cb726f4-dbc1-4079-b440-fe5be88d18ee",
+            "method": "aes-128-gcm",
+            "email": "aes-128-gcm@XRAYbyRARE"
+          },
+          {
+            "password": "5cb726f4-dbc1-4079-b440-fe5be88d18ee",
+            "method": "aes-256-gcm",
+            "email": "aes-256-gcm@XRAYbyRARE"
+          },
+          {
+            "password": "5cb726f4-dbc1-4079-b440-fe5be88d18ee",
+            "method": "chacha20-poly1305",
+            "email": "chacha20-poly1305@XRAYbyRARE"
+          }
+        ],
+        "network": "tcp,udp"
+      }
+    },                        
+    {
+      "port": 653,
+      "protocol": "trojan",
+      "tag": "trojanGRPC",
+      "settings": {
+        "clients": [
+          {
+            "id": "5cb726f4-dbc1-4079-b440-fe5be88d18ee",
+            "password": "5cb726f4-dbc1-4079-b440-fe5be88d18ee",
+            "flow": "xtls-rprx-direct",
+            "email": "testv5@trojanGRPC.XRAYbyRARE"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "gun",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "",
+          "alpn": [
+            "http/1.1",
+            "h2"
+          ],
+          "certificates": [
+            {
+              "certificateFile": "/etc/xray/xray.crt",
+              "keyFile": "/etc/xray/xray.key"
+            }
+          ]
+        },
+        "grpcSettings": {
+          "serviceName": "xraytrojangrpctls"
+        }
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "tag": "direct"
+    },
+    {
+      "protocol": "blackhole",
+      "settings": {},
+      "tag": "blocked"
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "ip": [
+          "0.0.0.0/8",
+          "10.0.0.0/8",
+          "100.64.0.0/10",
+          "169.254.0.0/16",
+          "172.16.0.0/12",
+          "192.0.0.0/24",
+          "192.0.2.0/24",
+          "192.168.0.0/16",
+          "198.18.0.0/15",
+          "198.51.100.0/24",
+          "203.0.113.0/24",
+          "::1/128",
+          "fc00::/7",
+          "fe80::/10"
+        ],
+        "outboundTag": "blocked"
+      },
+      {
+        "inboundTag": [
+          "api"
+        ],
+        "outboundTag": "api",
+        "type": "field"
+      },
+      {
+        "type": "field",
+        "outboundTag": "blocked",
+        "protocol": [
+          "bittorrent"
+        ]
+      }
+    ]
+  },
+  "stats": {},
+  "api": {
+    "services": [
+      "StatsService"
+    ],
+    "tag": "api"
+  },
+  "policy": {
+    "levels": {
+      "0": {
+        "statsUserDownlink": true,
+        "statsUserUplink": true
+      }
+    },
+    "system": {
+      "statsInboundUplink": true,
+      "statsInboundDownlink": true
+    }
+  }
+}
