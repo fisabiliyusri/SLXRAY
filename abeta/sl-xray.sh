@@ -67,7 +67,7 @@ path_key="/etc/xray/xray.key"
 # Buat Config Xray
 #1
 #LOG
-cat > /etc/xray/slconfig/1log.json << END
+cat > /etc/xray/conf/1log.json << END
 {
   "log": {
     "access": "/var/log/xray/access.log",
@@ -75,12 +75,11 @@ cat > /etc/xray/slconfig/1log.json << END
     "loglevel": "info"
   }
 }
-
 END
 #Port UTAMA 443
 #2
 #VLESS_TCP
-cat > /etc/xray/slconfig/2vless.json << END
+cat > /etc/xray/conf/2vless.json << END
 {
   "inbounds": [
     {
@@ -141,11 +140,10 @@ cat > /etc/xray/slconfig/2vless.json << END
     }
   ]
 }
-
 END
 #3
 #VLESS_H2
-cat > /etc/xray/slconfig/3vless_h2.json << END
+cat > /etc/xray/conf/3vless_h2.json << END
 {
   "inbounds": [
     {
@@ -195,11 +193,10 @@ cat > /etc/xray/slconfig/3vless_h2.json << END
     }
   ]
 }
-
 END
 #3
 #VLESS_MKCPTLS
-cat > /etc/xray/slconfig/3vless_mkcptls.json << END
+cat > /etc/xray/conf/3vless_mkcptls.json << END
 {
   "inbounds": [
     {
@@ -261,11 +258,10 @@ cat > /etc/xray/slconfig/3vless_mkcptls.json << END
     }
   ]
 }
-
 END
 #3
 #VLESS_MKCP
-cat > /etc/xray/slconfig/3vless_mkcp.json << END
+cat > /etc/xray/conf/3vless_mkcp.json << END
 {
   "inbounds": [
     {
@@ -319,11 +315,10 @@ cat > /etc/xray/slconfig/3vless_mkcp.json << END
     }
   ]
 }
-
 END
 #3
 #VLESS_WS_NONE
-cat > /etc/xray/slconfig/3vless_ws_none.json << END
+cat > /etc/xray/conf/3vless_ws_none.json << END
 {
   "inbounds": [
     {
@@ -364,11 +359,10 @@ cat > /etc/xray/slconfig/3vless_ws_none.json << END
     }
   ]
 }
-
 END
 #3
 #VLESS_WSTLS
-cat > /etc/xray/slconfig/3vless_ws.json << END
+cat > /etc/xray/conf/3vless_ws.json << END
 {
   "inbounds": [
     {
@@ -396,11 +390,10 @@ cat > /etc/xray/slconfig/3vless_ws.json << END
     }
   ]
 }
-
 END
 #4
 #trojan_GRPC_TCP
-cat > /etc/xray/slconfig/4trojan_grpc.json << END
+cat > /etc/xray/conf/4trojan_grpc.json << END
 {
     "inbounds": [
         {
@@ -433,7 +426,7 @@ cat > /etc/xray/slconfig/4trojan_grpc.json << END
 END
 #4
 #trojan_TCP
-cat > /etc/xray/slconfig/4trojan_tcp.json << END
+cat > /etc/xray/conf/4trojan_tcp.json << END
 {
   "inbounds": [
     {
@@ -467,7 +460,7 @@ cat > /etc/xray/slconfig/4trojan_tcp.json << END
 END
 #4
 #trojan_XTLS
-cat > /etc/xray/slconfig/4trojan_xtls.json << END
+cat > /etc/xray/conf/4trojan_xtls.json << END
 {
     "inbounds": [
         {
@@ -521,7 +514,7 @@ cat > /etc/xray/slconfig/4trojan_xtls.json << END
 END
 #5
 #VMESS_WS_TLS
-cat > /etc/xray/slconfig/5vmess_ws_tls.json << END
+cat > /etc/xray/conf/5vmess_ws_tls.json << END
 {
   "inbounds": [
     {
@@ -552,7 +545,7 @@ cat > /etc/xray/slconfig/5vmess_ws_tls.json << END
 END
 #5
 #VMESS_HTTPTLS
-cat > /etc/xray/slconfig/5vmess_http_tls.json << END
+cat > /etc/xray/conf/5vmess_http_tls.json << END
 {
   "inbounds": [
     {
@@ -623,7 +616,7 @@ cat > /etc/xray/slconfig/5vmess_http_tls.json << END
 END
 #5
 #VMESS_HTTP
-cat > /etc/xray/slconfig/5vmess_http.json << END
+cat > /etc/xray/conf/5vmess_http.json << END
 {
   "inbounds": [
     {
@@ -674,7 +667,7 @@ cat > /etc/xray/slconfig/5vmess_http.json << END
 END
 #5
 #VMESS_TCPTLS
-cat > /etc/xray/slconfig/5vmess_tcp_tls.json << END
+cat > /etc/xray/conf/5vmess_tcp_tls.json << END
 {
   "inbounds": [
     {
@@ -725,7 +718,7 @@ cat > /etc/xray/slconfig/5vmess_tcp_tls.json << END
 END
 #5
 #VMess_WS_NONE
-cat > /etc/xray/slconfig/5vmess_ws_none.json << END
+cat > /etc/xray/conf/5vmess_ws_none.json << END
 {
   "inbounds": [
     {
@@ -770,7 +763,7 @@ cat > /etc/xray/slconfig/5vmess_ws_none.json << END
 END
 #5
 #VLESS_GRPC
-cat > /etc/xray/slconfig/5vless_grpc.json << END
+cat > /etc/xray/conf/5vless_grpc.json << END
 {
   "inbounds": [
     {
@@ -813,7 +806,7 @@ cat > /etc/xray/slconfig/5vless_grpc.json << END
 END
 #7
 #shadowsocks
-cat > /etc/xray/slconfig/7shadowsocks.json << END
+cat > /etc/xray/conf/7shadowsocks.json << END
 {
   "inbounds": [
     {
@@ -846,7 +839,7 @@ cat > /etc/xray/slconfig/7shadowsocks.json << END
 END
 #10
 #ipv4
-cat > /etc/xray/slconfig/10ipv4.json << END
+cat > /etc/xray/conf/10ipv4.json << END
 {
     "outbounds":[
         {
@@ -934,7 +927,7 @@ cat > /etc/xray/slconfig/10ipv4.json << END
 END
 #11
 #dns
-cat > /etc/xray/slconfig/11dns.json << END
+cat > /etc/xray/conf/11dns.json << END
 {
     "dns": {
         "servers": [
@@ -958,7 +951,7 @@ User=root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/local/bin/xray -config /etc/xray/config.json
+ExecStart=/usr/local/bin/xray run -confdir /etc/xray/conf
 Restart=on-failure
 RestartPreventExitStatus=23
 
