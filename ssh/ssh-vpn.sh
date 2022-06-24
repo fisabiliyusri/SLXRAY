@@ -154,11 +154,6 @@ apt-get --reinstall --fix-missing install -y bzip2 gzip coreutils wget screen rs
 #echo "neofetch" >> .profile
 echo "status" >> .profile
 
-# install webserver
-apt -y install nginx php php-fpm php-cli php-mysql libxml-parser-perl
-rm /etc/nginx/sites-enabled/
-rm /etc/nginx/sites-available/
-cd
 
 # install badvpn
 cd
