@@ -9,6 +9,7 @@ Info Port:
    - XRAY VLESS H2           : 100
    - XRAY VLESS MKCP         : 7443
    - XRAY VLESS MKCP TLS     : 743
+   - XRAY TROJAN GO          : 2087
    - XRAY TROJAN GRPC TLS    : 653
    - XRAY TROJAN XTLS/TLS    : 6443
    - XRAY VMESS HTTP TLS     : 643
@@ -17,3 +18,8 @@ Info Port:
    - XRAY VLESS WS NONE      : 88
    - XRAY VMESS WS NONE      : 888
    - XRAY Shadowsocks AEAD   : 1111
+   - XRAY TROJAN GRPC        : 2083
+   - XRAY TROJAN HTTP        : 880
+   - XRAY TROJAN XTLS        : 5443
+   - XRAY TROJAN WS TLS      : 2096
+   - XRAY TROJAN WS NON TLS  : 2095
