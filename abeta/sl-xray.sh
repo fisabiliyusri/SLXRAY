@@ -467,20 +467,215 @@ cat > /etc/xray/4trojan_tcp.json << END
 }
 
 END
-#
-#
+#4
+#trojan_XTLS
+cat > /etc/xray/4trojan_xtls.json << END
+{
+    "inbounds": [
+        {
+            "port": 6443,
+            "protocol": "trojan",
+            "tag": "trojanXTLS",
+            "settings": {
+                "clients": [
+                    {
+                        "password": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+                        "flow": "xtls-rprx-direct",
+                        "email": "trojanXTLS@XRAYbyRARE"
+                    }
+                ],
+                "fallbacks": [
+                    {
+                        "alpn": "h2",
+                        "dest": 31302,
+                        "xver": 0
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "xtls",
+                "xtlsSettings": {
+                    "minVersion": "1.2",
+                    "alpn": [
+                        "http/1.1",
+                        "h2"
+                    ],
+                    "certificates": [
+                        {
+                            "certificateFile": "/etc/rare/xray/xray.crt",
+                            "keyFile": "/etc/rare/xray/xray.key"
+                        }
+                    ]
+                },
+                "domain": "sgx6b.vless.tech",
+                "sniffing": {
+                    "enabled": true,
+                    "destOverride": [
+                        "http",
+                        "tls"
+                    ]
+                }
+            }
+        }
+    ]
+}
 
 END
-#
-#
+#5
+#VMESS_WS_TLS
+cat > /etc/xray/5vmess_ws_tls.json << END
+{
+  "inbounds": [
+    {
+      "listen": "127.0.0.1",
+      "port": 31299,
+      "protocol": "vmess",
+      "tag": "vmessWSTLS",
+      "settings": {
+        "clients": [
+          {
+            "id": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+            "add": "sgx6b.vless.tech",
+            "email": "vmessWSTLS@XRAYbyRARE"            
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "acceptProxyProtocol": true,
+          "path": "/xrayvws"
+        }
+      }
+    }
+  ]
+}
 
 END
-#
-#
+#5
+#VMESS_HTTPTLS
+cat > /etc/xray/5vmess_http_tls.json << END
+{
+  "inbounds": [
+    {
+      "port": 643,
+      "protocol": "vmess",
+      "tag": "vmessHTTPTLS",
+      "settings": {
+        "clients": [
+            {
+                "id": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+                "email": "vmessHTTPTLS@XRAYbyRARE"                
+            }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "tcpSettings": {
+          "header": {
+            "type": "http",
+            "response": {
+              "version": "1.1",
+              "status": "200",
+              "reason": "OK",
+              "headers": {
+                "Content-Type": [
+                  "application/octet-stream",
+                  "video/mpeg",
+                  "application/x-msdownload",
+                  "text/html",
+                  "application/x-shockwave-flash"                  
+                ],
+                "Transfer-Encoding": [
+                  "chunked"
+                ],
+                "Connection": [
+                  "keep-alive"
+                ],
+                "Pragma": "no-cache"
+              }           
+            }
+          }
+        },
+        "security": "tls",
+        "tlsSettings": {
+          "certificates": [
+            {
+              "certificateFile": "/etc/rare/xray/xray.crt",
+              "keyFile": "/etc/rare/xray/xray.key"              
+            }
+          ],
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ]
+        }
+      },
+      "domain": "sgx6c.vless.tech",
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ]
+}
 
 END
-#
-#
+#5
+#VMESS_HTTP
+cat > /etc/xray/5vmess_http.json << END
+{
+  "inbounds": [
+    {
+      "port": 80,
+      "protocol": "vmess",
+      "tag": "vmessHTTP",
+      "settings": {
+        "clients": [
+            {
+                "id": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+                "email": "vmessHTTP@XRAYbyRARE"                
+            }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "tcpSettings": {
+          "header": {
+            "type": "http",
+            "response": {
+              "version": "1.1",
+              "status": "200",
+              "reason": "OK",
+              "headers": {
+                "Content-Type": [
+                  "application/octet-stream",
+                  "video/mpeg",
+                  "application/x-msdownload",
+                  "text/html",
+                  "application/x-shockwave-flash"                  
+                ],
+                "Transfer-Encoding": [
+                  "chunked"
+                ],
+                "Connection": [
+                  "keep-alive"
+                ],
+                "Pragma": "no-cache"
+              }           
+            }
+          }
+        },
+        "security": "none"
+      }
+    }
+  ]
+}
 
 END
 #
