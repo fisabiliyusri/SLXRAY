@@ -75,6 +75,7 @@ cat > /etc/xray/1log.json << END
     "loglevel": "info"
   }
 }
+
 END
 #Port UTAMA 443
 #2
@@ -140,6 +141,7 @@ cat > /etc/xray/2vless.json << END
     }
   ]
 }
+
 END
 #3
 #VLESS_H2
@@ -193,6 +195,7 @@ cat > /etc/xray/3vlessh2.json << END
     }
   ]
 }
+
 END
 #3
 #VLESS_MKCPTLS
@@ -258,5 +261,64 @@ cat > /etc/xray/3vless_mkcptls.json << END
     }
   ]
 }
+
+END
+#3
+#VLESS_MKCP
+cat > /etc/xray/3vless_mkcp.json << END
+{
+  "inbounds": [
+    {
+      "port": 7443,
+      "protocol": "vless",
+      "tag": "vlessMKCPwg",
+      "settings": {
+        "clients": [
+            {
+              "id": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+              "flow": "xtls-rprx-direct",
+              "email": "vlessMKCPwg@XRAYbyRARE"             
+            }
+        ],
+        "decryption": "none",
+        "fallbacks": [
+          {
+            "alpn": "h2",
+            "dest": 31302,
+            "xver": 0            
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "kcp",
+        "security": "none",
+        "tlsSettings": {},
+        "kcpSettings": {
+          "mtu": 1350,
+          "tti": 50,
+          "uplinkCapacity": 100,
+          "downlinkCapacity": 100,
+          "congestion": false,
+          "readBufferSize": 2,
+          "writeBufferSize": 2,
+          "header": {
+            "type": "wireguard"
+          },
+          "seed": "vlessmkcp"
+        },
+        "wsSettings": {},
+        "quicSettings": {}
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ]
+}
+
 END
 #
