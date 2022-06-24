@@ -91,7 +91,7 @@ cat > /etc/xray/2vless.json << END
         "clients": [
           {
             "id": "${uuid1}",
-            "add": "sgx6b.vless.tech",
+            "add": "$domain",
             "flow": "xtls-rprx-direct",
             "email": "vlessTCP@XRAYbyRARE" 
           }
@@ -130,8 +130,8 @@ cat > /etc/xray/2vless.json << END
           ],
           "certificates": [
             {
-              "certificateFile": "/etc/rare/xray/xray.crt",
-              "keyFile": "/etc/rare/xray/xray.key",
+              "certificateFile": "/etc/xray/xray.crt",
+              "keyFile": "/etc/xray/xray.key",
               "ocspStapling": 3600,
               "usage": "encipherment"
             }
@@ -185,8 +185,8 @@ cat > /etc/xray/3vless_h2.json << END
             ],
             "certificates": [
                 {
-                    "certificateFile": "/etc/rare/xray/xray.crt",
-                    "keyFile": "/etc/rare/xray/xray.key"
+                    "certificateFile": "/etc/xray/xray.crt",
+                    "keyFile": "/etc/xray/xray.key"
                 }
             ]
         }
@@ -229,8 +229,8 @@ cat > /etc/xray/3vless_mkcptls.json << END
         "tlsSettings": {
           "certificates": [
             {
-              "certificateFile": "/etc/rare/xray/xray.crt",
-              "keyFile": "/etc/rare/xray/xray.key"              
+              "certificateFile": "/etc/xray/xray.crt",
+              "keyFile": "/etc/xray/xray.key"              
             }
           ]
         },
@@ -503,8 +503,8 @@ cat > /etc/xray/4trojan_xtls.json << END
                     ],
                     "certificates": [
                         {
-                            "certificateFile": "/etc/rare/xray/xray.crt",
-                            "keyFile": "/etc/rare/xray/xray.key"
+                            "certificateFile": "/etc/xray/xray.crt",
+                            "keyFile": "/etc/xray/xray.key"
                         }
                     ]
                 },
@@ -603,8 +603,8 @@ cat > /etc/xray/5vmess_http_tls.json << END
         "tlsSettings": {
           "certificates": [
             {
-              "certificateFile": "/etc/rare/xray/xray.crt",
-              "keyFile": "/etc/rare/xray/xray.key"              
+              "certificateFile": "/etc/xray/xray.crt",
+              "keyFile": "/etc/xray/xray.key"              
             }
           ],
           "alpn": [
@@ -705,8 +705,8 @@ cat > /etc/xray/5vmess_tcp_tls.json << END
             ],
             "certificates": [
                 {
-                    "certificateFile": "/etc/rare/xray/xray.crt",
-                    "keyFile": "/etc/rare/xray/xray.key"
+                    "certificateFile": "/etc/xray/xray.crt",
+                    "keyFile": "/etc/xray/xray.key"
                 }
             ]
         },
@@ -805,8 +805,8 @@ cat > /etc/xray/5vless_grpc.json << END
           ],
           "certificates": [
             {
-              "certificateFile": "/etc/rare/xray/xray.crt",
-              "keyFile": "/etc/rare/xray/xray.key"
+              "certificateFile": "/etc/xray/xray.crt",
+              "keyFile": "/etc/xray/xray.key"
             }
           ]
         },
