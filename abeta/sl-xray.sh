@@ -28,6 +28,19 @@ chronyc sourcestats -v
 chronyc tracking -v
 date
 
+# / / Make Main Directory
+mkdir -p /usr/bin/xray
+mkdir -p /etc/xray/conf
+mkdir -p /etc/xray
+mkdir -p /etc/xray/xray
+mkdir -p /etc/xray/v2ray
+mkdir -p /etc/xray/tls
+mkdir -p /etc/xray/config-url
+mkdir -p /etc/xray/config-user
+mkdir -p /etc/xray/conf
+mkdir -p /etc/xray/v2ray/conf
+mkdir -p /var/log/xray/
+mkdir -p /var/log/v2ray/
 #
 sudo pkill -f nginx & wait $!
 systemctl stop nginx
