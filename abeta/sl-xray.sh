@@ -145,7 +145,7 @@ cat > /etc/xray/2vless.json << END
 END
 #3
 #VLESS_H2
-cat > /etc/xray/3vlessh2.json << END
+cat > /etc/xray/3vless_h2.json << END
 {
   "inbounds": [
     {
@@ -323,19 +323,148 @@ cat > /etc/xray/3vless_mkcp.json << END
 END
 #3
 #VLESS_WS_NONE
-cat > /etc/xray/3vless_mkcp.json << END
+cat > /etc/xray/3vless_ws_none.json << END
+{
+  "inbounds": [
+    {
+      "port": 88,
+      "protocol": "vless",
+      "tag": "vlessWSNONE",
+      "settings": {
+        "clients": [
+          {
+            "id": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+            "email": "vlessWSNONE@XRAYbyRARE"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "tlsSettings": {},
+        "tcpSettings": {},
+        "kcpSettings": {},
+        "httpSettings": {},
+        "wsSettings": {
+          "path": "/xrayws",
+          "headers": {
+            "Host": ""
+          }
+        },
+        "quicSettings": {}
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    }
+  ]
+}
 
 END
-#
-#
+#3
+#VLESS_WSTLS
+cat > /etc/xray/3vless_ws.json << END
+{
+  "inbounds": [
+    {
+      "port": 31297,
+      "listen": "127.0.0.1",
+      "protocol": "vless",
+      "tag": "vlessWSTLS",
+      "settings": {
+        "clients": [
+          {
+            "id": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+            "email": "vlessWSTLS@XRAYbyRARE"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "none",
+        "wsSettings": {
+          "acceptProxyProtocol": true,
+          "path": "/xrayws"
+        }
+      }
+    }
+  ]
+}
 
 END
-#
-#
+#4
+#trojan_GRPC_TCP
+cat > /etc/xray/4trojan_grpc.json << END
+{
+    "inbounds": [
+        {
+            "port": 31304,
+            "listen": "127.0.0.1",
+            "protocol": "trojan",
+            "tag": "trojanGRPCTCP",
+            "settings": {
+                "clients": [
+                    {
+                        "password": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+                        "email": "trojanGRPC@XRAYbyRARE"
+                    }
+                ],
+                "fallbacks": [
+                    {
+                        "dest": "31300"
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "grpc",
+                "grpcSettings": {
+                    "serviceName": "xraytrojangrpctcp"
+                }
+            }
+        }
+    ]
+}
 
 END
-#
-#
+#4
+#trojan_TCP
+cat > /etc/xray/4trojan_tcp.json << END
+{
+  "inbounds": [
+    {
+      "port": 31296,
+      "listen": "127.0.0.1",
+      "protocol": "trojan",
+      "tag": "trojanTCP",
+      "settings": {
+        "clients": [
+          {
+            "password": "8bf76417-c1f2-4686-a83c-aec7d0519697",
+            "email": "trojanTCP@XRAYbyRARE"
+          }
+        ],
+        "fallbacks": [
+          {
+            "dest": "31300"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "none",
+        "tcpSettings": {
+          "acceptProxyProtocol": true
+        }
+      }
+    }
+  ]
+}
 
 END
 #
