@@ -158,17 +158,6 @@ echo "status" >> .profile
 apt -y install nginx php php-fpm php-cli php-mysql libxml-parser-perl
 rm /etc/nginx/sites-enabled/
 rm /etc/nginx/sites-available/
-curl https://${slxray1}/nginx.conf > /etc/nginx/nginx.conf
-curl https://${slxray1}/vps.conf > /etc/nginx/conf.d/vps.conf
-sed -i 's/listen = \/var\/run\/php-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php/fpm/pool.d/www.conf
-useradd -m vps;
-mkdir -p /home/vps/public_html
-echo "<?php phpinfo() ?>" > /home/vps/public_html/info.php
-chown -R www-data:www-data /home/vps/public_html
-chmod -R g+rw /home/vps/public_html
-cd /home/vps/public_html
-wget -O /home/vps/public_html/index.html "https://${slxray1}/index.html"
-/etc/init.d/nginx restart
 cd
 
 # install badvpn
