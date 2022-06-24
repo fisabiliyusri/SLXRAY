@@ -191,7 +191,7 @@ cat > /etc/xray/3vless_h2.json << END
             ]
         }
       },
-      "domain": "sgx6b.vless.tech"
+      "domain": "$domain"
     }
   ]
 }
@@ -250,7 +250,7 @@ cat > /etc/xray/3vless_mkcptls.json << END
         "wsSettings": {},
         "quicSettings": {}
       },
-      "domain": "sgx6c.vless.tech",
+      "domain": "$domain",
       "sniffing": {
         "enabled": true,
         "destOverride": [
@@ -508,7 +508,7 @@ cat > /etc/xray/4trojan_xtls.json << END
                         }
                     ]
                 },
-                "domain": "sgx6b.vless.tech",
+                "domain": "$domain",
                 "sniffing": {
                     "enabled": true,
                     "destOverride": [
@@ -536,7 +536,7 @@ cat > /etc/xray/5vmess_ws_tls.json << END
         "clients": [
           {
             "id": "8bf76417-c1f2-4686-a83c-aec7d0519697",
-            "add": "sgx6b.vless.tech",
+            "add": "$domain",
             "email": "vmessWSTLS@XRAYbyRARE"            
           }
         ]
@@ -613,7 +613,7 @@ cat > /etc/xray/5vmess_http_tls.json << END
           ]
         }
       },
-      "domain": "sgx6c.vless.tech",
+      "domain": "$domain",
       "sniffing": {
         "enabled": true,
         "destOverride": [
@@ -717,7 +717,7 @@ cat > /etc/xray/5vmess_tcp_tls.json << END
             }
         }
       },
-      "domain": "sgx6b.vless.tech",
+      "domain": "$domain",
       "sniffing": {
         "enabled": true,
         "destOverride": [
@@ -743,7 +743,7 @@ cat > /etc/xray/5vmess_ws_none.json << END
         "clients": [
           {
             "id": "8bf76417-c1f2-4686-a83c-aec7d0519697",
-            "add": "sgx6b.vless.tech",
+            "add": "$domain",
             "email": "vmessWSNONE@XRAYbyRARE" 
           }
         ],
@@ -789,7 +789,7 @@ cat > /etc/xray/5vless_grpc.json << END
         "clients": [
           {
             "id": "8bf76417-c1f2-4686-a83c-aec7d0519697",
-            "add": "sgx6b.vless.tech",
+            "add": "$domain",
             "email": "vlessGRPC@XRAYbyRARE" 
           }
         ],
