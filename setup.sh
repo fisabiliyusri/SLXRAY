@@ -56,29 +56,29 @@ echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━�
 echo -e "\E[44;1;41m      🔰 SETUP mantapv2 SLXRAY 🔰      \E[0m"
 echo -e "\033[1;36m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m" 
 echo " 🔰 >>> Service & Port" |tee -a log-install.txt
-echo " 🔰  XRAY VLESS XTLS SPLICE  : 443 |tee -a log-install.txt
-echo " 🔰  XRAY VLESS XTLS DIRECT  : 443 |tee -a log-install.txt
-echo " 🔰  XRAY VLESS WS TLS       : 443 |tee -a log-install.txt
-echo " 🔰  XRAY TROJAN TCP         : 443 |tee -a log-install.txt
-echo " 🔰  XRAY VMESS TLS          : 443 |tee -a log-install.txt
-echo " 🔰  XRAY VLESS GRPC         : 6643 |tee -a log-install.txt
-echo " 🔰  XRAY VLESS H2           : 100 |tee -a log-install.txt
-echo " 🔰  XRAY VLESS MKCP         : 7443 |tee -a log-install.txt
-echo " 🔰  XRAY VLESS MKCP TLS     : 743 |tee -a log-install.txt
-echo " 🔰  TROJAN GO               : 2087 |tee -a log-install.txt
-echo " 🔰  XRAY TROJAN GRPC TLS    : 653 |tee -a log-install.txt
-echo " 🔰  XRAY TROJAN XTLS/TLS    : 6443 |tee -a log-install.txt
-echo " 🔰  XRAY VMESS HTTP TLS     : 643 |tee -a log-install.txt
-echo " 🔰  XRAY VMESS HTTP         : 80 |tee -a log-install.txt
-echo " 🔰  XRAY VMESS TCP TLS      : 535 |tee -a log-install.txt
-echo " 🔰  XRAY VLESS WS NONE      : 88 |tee -a log-install.txt
-echo " 🔰  XRAY VMESS WS NONE      : 888 |tee -a log-install.txt
-echo " 🔰  XRAY Shadowsocks AEAD   : 1111 |tee -a log-install.txt
-echo " 🔰  XRAY TROJAN GRPC        : 2083 |tee -a log-install.txt
-echo " 🔰  XRAY TROJAN HTTP        : 880 |tee -a log-install.txt
-echo " 🔰  XRAY TROJAN XTLS        : 5443 |tee -a log-install.txt
-echo " 🔰  XRAY TROJAN WS TLS      : 2096 |tee -a log-install.txt
-echo " 🔰  XRAY TROJAN WS NON TLS  : 2095 |tee -a log-install.txt
+echo " 🔰  XRAY VLESS XTLS SPLICE  : 443" |tee -a log-install.txt
+echo " 🔰  XRAY VLESS XTLS DIRECT  : 443" |tee -a log-install.txt
+echo " 🔰  XRAY VLESS WS TLS       : 443" |tee -a log-install.txt
+echo " 🔰  XRAY TROJAN TCP         : 443" |tee -a log-install.txt
+echo " 🔰  XRAY VMESS TLS          : 443" |tee -a log-install.txt
+echo " 🔰  XRAY VLESS GRPC         : 6643" |tee -a log-install.txt
+echo " 🔰  XRAY VLESS H2           : 100" |tee -a log-install.txt
+echo " 🔰  XRAY VLESS MKCP         : 7443" |tee -a log-install.txt
+echo " 🔰  XRAY VLESS MKCP TLS     : 743" |tee -a log-install.txt
+echo " 🔰  TROJAN GO               : 2087" |tee -a log-install.txt
+echo " 🔰  XRAY TROJAN GRPC TLS    : 653" |tee -a log-install.txt
+echo " 🔰  XRAY TROJAN XTLS/TLS    : 6443" |tee -a log-install.txt
+echo " 🔰  XRAY VMESS HTTP TLS     : 643" |tee -a log-install.txt
+echo " 🔰  XRAY VMESS HTTP         : 80" |tee -a log-install.txt
+echo " 🔰  XRAY VMESS TCP TLS      : 535" |tee -a log-install.txt
+echo " 🔰  XRAY VLESS WS NONE      : 88" |tee -a log-install.txt
+echo " 🔰  XRAY VMESS WS NONE      : 888" |tee -a log-install.txt
+echo " 🔰  XRAY Shadowsocks AEAD   : 1111" |tee -a log-install.txt
+echo " 🔰  XRAY TROJAN GRPC        : 2083" |tee -a log-install.txt
+echo " 🔰  XRAY TROJAN HTTP        : 880" |tee -a log-install.txt
+echo " 🔰  XRAY TROJAN XTLS        : 5443" |tee -a log-install.txt
+echo " 🔰  XRAY TROJAN WS TLS      : 2096" |tee -a log-install.txt
+echo " 🔰  XRAY TROJAN WS NON TLS  : 2095" |tee -a log-install.txt
 echo " 🔰 >>> Service & Port" |tee -a log-install.txt
 echo " 🔰 YANG BAWAH INI PRODUK CACAT |tee -a log-install.txt
 echo " 🔰 VMESS TLS : 2053" |tee -a log-install.txt
