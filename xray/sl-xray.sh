@@ -40,6 +40,35 @@ mkdir -p /etc/xray/config-url
 mkdir -p /etc/xray/config-user
 mkdir -p /var/log/xray/
 mkdir -p /var/log/v2ray/
+
+# install
+apt-get --reinstall --fix-missing install -y linux-headers-cloud-amd64 bzip2 gzip coreutils wget jq screen rsyslog iftop htop net-tools zip unzip wget net-tools curl nano sed screen gnupg gnupg1 bc apt-transport-https build-essential dirmngr libxml-parser-perl git lsof
+cat> /root/.profile << END
+# ~/.profile: executed by Bourne-compatible login shells.
+
+if [ "$BASH" ]; then
+  if [ -f ~/.bashrc ]; then
+    . ~/.bashrc
+  fi
+fi
+
+mesg n || true
+clear
+menu
+END
+chmod 644 /root/.profile
+#
+# install NGINX webserver
+sudo apt install gnupg2 ca-certificates lsb-release -y 
+echo "deb http://nginx.org/packages/mainline/debian $(lsb_release -cs) nginx" | sudo tee /etc/apt/sources.list.d/nginx.list 
+echo -e "Package: *\nPin: origin nginx.org\nPin: release o=nginx\nPin-Priority: 900\n" | sudo tee /etc/apt/preferences.d/99nginx 
+curl -o /tmp/nginx_signing.key https://nginx.org/keys/nginx_signing.key 
+# gpg --dry-run --quiet --import --import-options import-show /tmp/nginx_signing.key
+sudo mv /tmp/nginx_signing.key /etc/apt/trusted.gpg.d/nginx_signing.asc
+sudo apt update 
+apt -y install nginx 
+systemctl daemon-reload
+systemctl enable nginx
 #
 sudo pkill -f nginx & wait $!
 systemctl stop nginx
@@ -117,6 +146,7 @@ rm -rf /usr/share/nginx/html
 wget -q -P /usr/share/nginx https://raw.githubusercontent.com/racunzx/hijk.art/main/html.zip 
 unzip -o /usr/share/nginx/html.zip -d /usr/share/nginx/html 
 rm -f /usr/share/nginx/html.zip*
+chown -R www-data:www-data /usr/share/nginx/html
 
 # / / Ambil Xray Core Version Terbaru
 latest_version="$(curl -s https://api.github.com/repos/XTLS/Xray-core/releases | grep tag_name | sed -E 's/.*"v(.*)".*/\1/' | head -n 1)"
